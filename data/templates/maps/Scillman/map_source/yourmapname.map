@@ -1,0 +1,55 @@
+iwmap 4
+"000_Global" flags  active
+"The Map" flags 
+// entity 0
+{
+"contrastGain" ".25"
+"sunRadiosity" "1"
+"sunlight" ".6"
+"sundirection" "-30 42 0"
+"sundiffusecolor" "0.5 0.6 1"
+"suncolor" "0.75 0.9 1"
+"diffusefraction" "0.35"
+"ambient" "0.1"
+"_color" "0.6 0.7 1.000000"
+"classname" "worldspawn"
+// brush 0
+{
+ ( -88 240 -48 ) ( -104 240 -48 ) ( -104 -232 -48 ) lightgrid_volume 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -112 -240 96 ) ( -112 232 96 ) ( -96 232 96 ) lightgrid_volume 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -104 -240 168 ) ( -88 -240 168 ) ( -88 -240 -48 ) lightgrid_volume 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 240 -232 168 ) ( 240 240 168 ) ( 240 240 -48 ) lightgrid_volume 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -88 240 168 ) ( -104 240 168 ) ( -104 240 -48 ) lightgrid_volume 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -240 248 168 ) ( -240 -224 168 ) ( -240 -224 -48 ) lightgrid_volume 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+// brush 1
+{
+ ( -88 240 96 ) ( -104 240 96 ) ( -104 -232 96 ) lightgrid_sky 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -120 -240 192 ) ( -120 232 192 ) ( -104 232 192 ) lightgrid_sky 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -104 -240 312 ) ( -88 -240 312 ) ( -88 -240 96 ) lightgrid_sky 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( 240 -232 312 ) ( 240 240 312 ) ( 240 240 96 ) lightgrid_sky 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -88 240 312 ) ( -104 240 312 ) ( -104 240 96 ) lightgrid_sky 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+ ( -240 248 312 ) ( -240 -224 312 ) ( -240 -224 96 ) lightgrid_sky 64 64 0 0 0 0 lightmap_gray 16384 16384 0 0 0 0
+}
+}
+// entity 1
+{
+"origin" "0.0 0.0 0.0"
+"model" "cp_test2_geo.map"
+"classname" "misc_prefab"
+}
+// entity 2
+{
+"origin" "0.0 0.0 8.0"
+"classname" "info_player_start"
+}
+// entity 3
+{
+"origin" "96.0 96.0 56.0"
+"classname" "reflection_probe"
+}
+// entity 4
+{
+"origin" "-96.0 -96.0 56.0"
+"classname" "reflection_probe"
+}

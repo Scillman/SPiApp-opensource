@@ -1,0 +1,8 @@
+VERSION             "1"
+CONFIG              "F:\projects\mk\bin\StringEd\StringEd.cfg"
+FILENOTES           ""
+
+REFERENCE           MAPNAME
+LANG_ENGLISH        "yourmapname"
+
+ENDMARKER

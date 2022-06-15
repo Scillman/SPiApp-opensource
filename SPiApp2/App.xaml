@@ -1,0 +1,30 @@
+﻿<Application x:Class="SPiApp2.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:SPiApp2.Controls"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/default.xaml" />
+                <ResourceDictionary Source="Styles/Window.xaml" />
+                <ResourceDictionary Source="Styles/Grid.xaml" />
+                <ResourceDictionary Source="Styles/ScrollBar.xaml" />
+                <ResourceDictionary Source="Styles/TabControl.xaml" />
+                <ResourceDictionary Source="Styles/TabItem.xaml" />
+                <ResourceDictionary Source="Styles/GroupBox.xaml" />
+                <ResourceDictionary Source="Styles/ListBox.xaml" />
+                <ResourceDictionary Source="Styles/ListBoxItem.xaml" />
+                <ResourceDictionary Source="Styles/Label.xaml" />
+                <ResourceDictionary Source="Styles/Button.xaml" />
+                <ResourceDictionary Source="Styles/TextBox.xaml" />
+                <ResourceDictionary Source="Styles/CheckBox.xaml" />
+                <ResourceDictionary Source="Styles/ComboBox.xaml" />
+                <ResourceDictionary Source="Styles/ComboBoxItem.xaml" />
+                <ResourceDictionary Source="Styles/RadioButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <!-- Overrides the corner in the ScrollViewer control -->
+            <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="{DynamicResource ScrollBarBackground}"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

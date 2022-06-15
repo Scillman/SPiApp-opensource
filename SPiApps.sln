@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPiApp", "SPiApp\SPiApp.csproj", "{8CA89E76-C507-43B6-8AC3-C3E06915954E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPiApp2", "SPiApp2\SPiApp2.csproj", "{3926A355-B5DC-4843-9A59-1CCE77EB587A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CA89E76-C507-43B6-8AC3-C3E06915954E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CA89E76-C507-43B6-8AC3-C3E06915954E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3926A355-B5DC-4843-9A59-1CCE77EB587A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3926A355-B5DC-4843-9A59-1CCE77EB587A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3926A355-B5DC-4843-9A59-1CCE77EB587A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3926A355-B5DC-4843-9A59-1CCE77EB587A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {76EECE28-D1AE-49AB-AED9-4FF632302651}
+	EndGlobalSection
+EndGlobal

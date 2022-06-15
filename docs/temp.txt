@@ -1,0 +1,10 @@
+87, 90, 189, 229, 7, 194, 155, 137, 133, 163, 140, 178, 255, 132, 55, 111,  == C:\Program Files (x86)\Steam\steamapps\common\Call of Duty 4\sp_tool.exe
+201, 132, 26, 52, 92, 113, 54, 216, 108, 152, 138, 102, 18, 82, 47, 183,  == C:\Program Files (x86)\Steam\steamapps\common\Call of Duty 4\mp_tool.exe
+118, 113, 243, 176, 2, 115, 165, 207, 143, 23, 102, 221, 137, 2, 19, 209,  == C:\Program Files (x86)\Steam\steamapps\common\Call of Duty 4\bin\asset_manager.exe
+236, 167, 25, 68, 232, 87, 48, 71, 92, 169, 212, 74, 151, 173, 12, 74,  == C:\Program Files (x86)\Steam\steamapps\common\Call of Duty 4\bin\CoD4EffectsEd.exe
+223, 159, 12, 131, 22, 33, 40, 59, 60, 144, 43, 234, 87, 114, 91, 233,  == C:\Program Files (x86)\Steam\steamapps\common\Call of Duty 4\bin\CoD4Radiant.exe
+17, 109, 120, 182, 199, 100, 69, 232, 78, 193, 96, 187, 109, 87, 151, 59,  == C:\Program Files (x86)\Steam\steamapps\common\Call of Duty 4\bin\cod4map.exe
+106, 50, 242, 203, 154, 57, 46, 225, 113, 220, 226, 235, 46, 46, 218, 13,  == C:\Program Files (x86)\Steam\steamapps\common\Call of Duty 4\bin\cod4rad.exe
+236, 70, 143, 181, 227, 13, 57, 119, 188, 45, 31, 190, 28, 224, 12, 1,  == C:\Program Files (x86)\Steam\steamapps\common\Call of Duty 4\bin\converter.exe
+228, 82, 104, 133, 65, 1, 117, 172, 164, 68, 100, 93, 93, 166, 220, 219,  == C:\Program Files (x86)\Steam\steamapps\common\Call of Duty 4\bin\linker_pc.exe
+136, 94, 158, 180, 40, 137, 202, 84, 127, 78, 53, 21, 220, 222, 93, 61,  == C:\Program Files (x86)\Steam\steamapps\common\Call of Duty 4\mods\ModWarfare\7za.exe

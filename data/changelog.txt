@@ -1,0 +1,62 @@
+# Changelog
+
+## Built 20021602
+ - Added an option to start the selected mod with/without the selected map.
+
+## Built 20021601
+ - Added an option to open selected map in radiant.
+ - Added radio buttons for on the fly swapping between SP and MP.
+
+## Built 20010601
+ - Fixed bugs that resulted from merging branches.
+
+## Built 20010401
+ - Fixed a crash when setting an invalid path.
+
+## Built 18122501
+ - Allows for arbitrary rawfile names.
+
+## Built 18121801
+ - Fixed ALL user data variable load/save operations.
+
+## Built 18121301
+ - Fixed the developer_script being misspelled.
+
+## Built 18120501
+ - Fixed a bug when creating mods using template, where the template did not
+   to the proper location.
+
+## Built 181129
+ - WPF demo, not all controls are fully styled yet.
+ - WPF dynamic theme. (themes\example.xaml)
+
+## Built 181120
+ - Fixed a bug in the parser code.
+ - Added support for file/directory paths to the parser.
+ - Disabled tools synchronization. (Untested with the new code.)
+ - Changed the persistent files code. (Less code, more flexibility.)
+ - Overhauled Preferences.
+ - Added an option to perferences for 7za.exe selection.
+
+## Built 181119
+ - Added four custom controls to the bottom of the compile screen.
+ - Custom controls can launch applications and keywords get resolved.
+ - Fixed light compiling not working on long paths; aka Steam default directory.
+ - Fixed the 'Scillman' maps template.
+ - Disabled the use of custom maps for EffectsEd.
+
+## Built 181118/2
+ - Templates now allow three variants: UPPERCASE, Mixed, lowercase.
+ - Removed Bounce options from Light Options. (See previous built.)
+ - Realigned and grouped controls to be more compact and easier managable.
+ - Fixed the browse dialog for 7za.exe selection.
+ - Added Browse option for the single player executable.
+ - Added Text Editor selection to optional preferences.
+ - Added buttons to open map files directly in the tools.
+ - Added a confirmation to run the converter.
+
+## Built 181118
+ - Files no longer load when switching tabs; but after it has switched.
+ - Keywords in templates are not replaced by either their UPPERCASE or lowercase.
+ - Disabled the bounce option in Light Options. (map compiler crashes.)
+ - Various behind the scene changes.

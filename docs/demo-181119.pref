@@ -1,0 +1,13 @@
+InstallPath="C:\Program Files (x86)\Steam\steamapps\common\Call of Duty 4"
+Language=English
+SyncTools=False
+Executable="iw3sp-nocd.exe"
+TextEditor="C:\Users\Scillman\AppData\Local\Programs\Microsoft VS Code\Code.exe"
+Custom0Text="model_pics"
+Custom1Text="yourmapname.cfg"
+Custom2Text="PSPad.exe"
+Custom3Text="wmplayer.exe"
+Custom0Value="C:\Games\Call of Duty 4\Docs\model_pics"
+Custom1Value="C:\Games\Call of Duty 4\raw\yourmapname.cfg"
+Custom2Value="\"C:\Program Files (x86)\PSPad editor\PSPad.exe\" \"C:\Games\Call of Duty 4\raw\yourmapname.cfg\""
+Custom3Value="C:\Program Files\Windows Media Player\wmplayer.exe"

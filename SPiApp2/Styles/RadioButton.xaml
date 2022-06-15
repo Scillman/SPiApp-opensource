@@ -1,0 +1,101 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="{x:Type RadioButton}" TargetType="{x:Type RadioButton}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource RadioButtonForeground}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <BulletDecorator Background="Transparent">
+                        <BulletDecorator.Bullet>
+                            <Grid Width="13" Height="13">
+                                <Ellipse x:Name="Border" StrokeThickness="1">
+                                    <Ellipse.Stroke>
+                                        <SolidColorBrush Color="{DynamicResource RadioButtonBorder}" />
+                                    </Ellipse.Stroke>
+                                    <Ellipse.Fill>
+                                        <SolidColorBrush Color="{DynamicResource RadioButtonBackground}" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <Ellipse x:Name="CheckMark" Margin="4" Visibility="Collapsed">
+                                    <Ellipse.Fill>
+                                        <SolidColorBrush Color="{DynamicResource RadioButtonBullet}" />
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                            </Grid>
+                        </BulletDecorator.Bullet>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CheckMark">
+                                            <DiscreteObjectKeyFrame KeyTime="0"  Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked" />
+                                <VisualState x:Name="Indeterminate" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ContentPresenter x:Name="Content" Margin="4,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" RecognizesAccessKey="True" />
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Shape.Stroke">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource RadioButtonHoverBorder}" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Border" Property="Shape.Fill">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource RadioButtonHoverBackground}" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="CheckMark" Property="Shape.Fill">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource RadioButtonHoverBullet}" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource RadioButtonHoverForeground}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Shape.Stroke">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource RadioButtonDisabledBorder}" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="Border" Property="Shape.Fill">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource RadioButtonDisabledBackground}" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="CheckMark" Property="Shape.Fill">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource RadioButtonDisabledBullet}" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource RadioButtonDisabledForeground}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
+    

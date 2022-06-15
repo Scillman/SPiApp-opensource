@@ -1,0 +1,15 @@
+ignore,code_post_gfx
+ignore,common
+col_map_sp,maps/yourmapname.d3dbsp
+rawfile,maps/yourmapname.gsc
+rawfile,maps/yourmapname_anim.gsc
+rawfile,maps/yourmapname_fx.gsc
+localize,yourmapname
+sound,common,yourmapname,!all_sp
+sound,generic,yourmapname,!all_sp
+sound,voiceovers,yourmapname,!all_sp
+sound,requests,yourmapname,!all_sp
+sound,mapname,yourmapname,all_sp
+rawfile,soundaliases/yourmapname.csv
+xmodel,viewmodel_base_viewhands
+weapon,sp/mp5

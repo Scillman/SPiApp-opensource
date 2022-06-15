@@ -1,0 +1,56 @@
+﻿<controls:CompilerWindow x:Class="SPiApp2.AppDialogBrowse"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SPiApp2"
+        xmlns:controls="clr-namespace:SPiApp2.Controls"
+        mc:Ignorable="d"
+        Style="{StaticResource ChromelessWindowStyle}"
+        Icon="Resources/app-64x64.ico"
+        Title="Browse" Width="460" Height="260">
+    <WindowChrome.WindowChrome>
+        <WindowChrome x:Name="chrome"
+                      CaptionHeight="24"
+                      CornerRadius="0"
+                      GlassFrameThickness="0"
+                      NonClientFrameEdges="None"
+                      ResizeBorderThickness="2"
+                      UseAeroCaptionButtons="False" />
+    </WindowChrome.WindowChrome>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_1" />
+        <CommandBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_2" />
+        <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_3" />
+        <CommandBinding Command="{x:Static SystemCommands.RestoreWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_4" />
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".3*" />
+            <ColumnDefinition Width=".7*" />
+            <ColumnDefinition Width=".3*" />
+        </Grid.ColumnDefinitions>
+
+        <ComboBox Grid.Row="0" Grid.Column="0" Margin="10,10,3,3" VerticalAlignment="Center" x:Name="viewDrive" />
+        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,10,3" x:Name="viewDirectory" IsReadOnly="True" />
+        <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,0,10,0" x:Name="viewList" />
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="10,3,10,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".7*" />
+                <ColumnDefinition Width=".3*" MinWidth="140" />
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,3,0" x:Name="viewPath" IsReadOnly="True" />
+            <ComboBox Grid.Column="1" Margin="0" VerticalAlignment="Center" x:Name="viewExtension">
+                <ComboBoxItem IsSelected="True">All Files (*.*)</ComboBoxItem>
+            </ComboBox>
+        </Grid>
+        <Button Grid.Row="3" Grid.Column="2" Margin="0,9,10,10" Click="Click_Select">Select</Button>
+
+    </Grid>
+</controls:CompilerWindow>

@@ -1,0 +1,734 @@
+﻿<controls:CompilerWindow
+    x:Class="SPiApp2.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:SPiApp2"
+    xmlns:controls="clr-namespace:SPiApp2.Controls"
+    mc:Ignorable="d"
+    Style="{StaticResource ChromelessWindowStyle}"
+    Icon="Resources/app-64x64.ico"
+    Title="(S) Compile Tools for Call of Duty 4" Width="900" Height="620">
+    <WindowChrome.WindowChrome>
+        <WindowChrome x:Name="chrome"
+                      CaptionHeight="24"
+                      CornerRadius="0"
+                      GlassFrameThickness="0"
+                      NonClientFrameEdges="None"
+                      ResizeBorderThickness="2"
+                      UseAeroCaptionButtons="False" />
+    </WindowChrome.WindowChrome>
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static SystemCommands.CloseWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_1" />
+        <CommandBinding Command="{x:Static SystemCommands.MaximizeWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_2" />
+        <CommandBinding Command="{x:Static SystemCommands.MinimizeWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_3" />
+        <CommandBinding Command="{x:Static SystemCommands.RestoreWindowCommand}" CanExecute="CommandBinding_CanExecute_1" Executed="CommandBinding_Executed_4" />
+    </Window.CommandBindings>
+    <Window.Resources>
+        <SolidColorBrush x:Key="Brush_LabelForegroundDark" Color="{DynamicResource LabelForegroundDark}" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" x:Name="rootTabs" SelectionChanged="Compiler_SwitchedRootTab">
+            <TabItem Header="Preferences" x:Name="tabPreferences">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TabControl Grid.Row="0">
+                        <TabItem Header="Required">
+                            <Grid Margin="0,3,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Margin="3,3,3,3">
+                                    Call of Duty 4 folder:
+                                </Label>
+                                <TextBox Grid.Row="0" Grid.Column="1" Margin="0,3,0,3" x:Name="ctrlInstallPath">
+                                    C:\Program Files (x86)\Steam\steamapps\Call of Duty 4
+                                </TextBox>
+                                <Button Grid.Row="0" Grid.Column="2" Margin="3,3,3,3" Click="Click_BrowseInstallPath">
+                                    Browse
+                                </Button>
+                                <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,0,3,6"
+                                       VerticalContentAlignment="Top" Padding="2,0,2,2">
+                                    WARNING: If the directory does not contain Call of Duty 4 it may result in unexpected behavior.
+                                </Label>
+                                <Label Grid.Row="2" Grid.Column="0" Margin="3,3,3,3">
+                                    Language:
+                                </Label>
+                                <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,3,0,3" x:Name="ctrlLanguage" Tag="0">
+                                    <ComboBoxItem Name="English" IsSelected="True">English</ComboBoxItem>
+                                    <ComboBoxItem Name="French">French</ComboBoxItem>
+                                    <ComboBoxItem Name="German">German</ComboBoxItem>
+                                    <ComboBoxItem Name="Polish">Polish</ComboBoxItem>
+                                </ComboBox>
+                                <Label Grid.Row="3" Grid.Column="0" Margin="3,3,3,3">
+                                    7za.exe:
+                                </Label>
+                                <TextBox Grid.Row="3" Grid.Column="1" Margin="0,3,0,3" x:Name="ctrlZipper">
+                                    Mods\ModWarfare\7za.exe
+                                </TextBox>
+                                <Button Grid.Row="3" Grid.Column="2" Margin="3,3,3,3" Click="Click_BrowseZipper">
+                                    Browse
+                                </Button>
+                                <!-- BUTTONS -->
+                                <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,9,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="90" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="1" Margin="3,0,0,0" Click="Click_PreferencesSaveRequired">Save Changes</Button>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Advanced">
+                            <Grid Margin="0,3,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="160" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Margin="3,3,3,3">
+                                    Single player executable:
+                                </Label>
+                                <TextBox Grid.Row="0" Grid.Column="1" Margin="0,3,0,3" x:Name="ctrlExecutable">
+                                    iw3sp.exe
+                                </TextBox>
+                                <Button Grid.Row="0" Grid.Column="2" Margin="3,3,3,3" Click="Click_BrowseExecutable">
+                                    Browse
+                                </Button>
+                                <Label Grid.Row="1" Grid.Column="0" Margin="3,3,3,3">
+                                    Text editor:
+                                </Label>
+                                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,3,0,3" x:Name="ctrlEditor" />
+                                <Button Grid.Row="1" Grid.Column="2" Margin="3,3,3,3" Click="Click_BrowseEditor">
+                                    Browse
+                                </Button>
+                                <Label Grid.Row="2" Grid.Column="0" Margin="3,3,3,3">
+                                    Compiler theme:
+                                </Label>
+                                <ComboBox Grid.Row="2" Grid.Column="1" Margin="0,3,0,3" IsReadOnly="True" x:Name="ctrlThemes" />
+                                <CheckBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="3,3,3,3" x:Name="ctrlSynchronize"
+                                          ToolTip="Enabling this saves a copy of the map's settings for the original compile tools.">
+                                    Synchronize Map Settings
+                                </CheckBox>
+                                <!-- BUTTONS -->
+                                <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,9,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="90" />
+                                        <ColumnDefinition Width="90" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="1" Margin="3,0,0,0" Click="Click_PreferencesAdvancedReset">Reset</Button>
+                                    <Button Grid.Column="2" Margin="3,0,0,0" Click="Click_PreferencesAdvancedSave">Save Changes</Button>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Optional">
+                            <Grid Margin="0,3,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="120" />
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="100" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <!-- CUSTOM #1 -->
+                                <Label Grid.Row="0" Grid.Column="0" Margin="3,3,3,3">Text #1</Label>
+                                <TextBox Grid.Row="0" Grid.Column="1" Margin="0,3,0,3" x:Name="ctrlCustom0Text" TextChanged="Compiler_CommonCustomTextChanged" />
+                                <Label Grid.Row="0" Grid.Column="2" Margin="3,3,3,3">Destination #1</Label>
+                                <TextBox Grid.Row="0" Grid.Column="3" Margin="0,3,0,3" x:Name="ctrlCustom0Value" />
+                                <Button Grid.Row="0" Grid.Column="4" Margin="3,3,3,3" Click="Click_BrowseCustom0">Browse</Button>
+
+                                <!-- CUSTOM #2 -->
+                                <Label Grid.Row="1" Grid.Column="0" Margin="3,3,3,3">Text #2</Label>
+                                <TextBox Grid.Row="1" Grid.Column="1" Margin="0,3,0,3" x:Name="ctrlCustom1Text" TextChanged="Compiler_CommonCustomTextChanged" />
+                                <Label Grid.Row="1" Grid.Column="2" Margin="3,3,3,3">Destination #2</Label>
+                                <TextBox Grid.Row="1" Grid.Column="3" Margin="0,3,0,3" x:Name="ctrlCustom1Value" />
+                                <Button Grid.Row="1" Grid.Column="4" Margin="3,3,3,3" Click="Click_BrowseCustom1">Browse</Button>
+
+                                <!-- CUSTOM #3 -->
+                                <Label Grid.Row="2" Grid.Column="0" Margin="3,3,3,3">Text #3</Label>
+                                <TextBox Grid.Row="2" Grid.Column="1" Margin="0,3,0,3" x:Name="ctrlCustom2Text" TextChanged="Compiler_CommonCustomTextChanged" />
+                                <Label Grid.Row="2" Grid.Column="2" Margin="3,3,3,3">Destination #3</Label>
+                                <TextBox Grid.Row="2" Grid.Column="3" Margin="0,3,0,3" x:Name="ctrlCustom2Value" />
+                                <Button Grid.Row="2" Grid.Column="4" Margin="3,3,3,3" Click="Click_BrowseCustom2">Browse</Button>
+
+                                <!-- CUSTOM #4 -->
+                                <Label Grid.Row="3" Grid.Column="0" Margin="3,3,3,3">Text #4</Label>
+                                <TextBox Grid.Row="3" Grid.Column="1" Margin="0,3,0,3" x:Name="ctrlCustom3Text" TextChanged="Compiler_CommonCustomTextChanged" />
+                                <Label Grid.Row="3" Grid.Column="2" Margin="3,3,3,3">Destination #4</Label>
+                                <TextBox Grid.Row="3" Grid.Column="3" Margin="0,3,0,3" x:Name="ctrlCustom3Value" />
+                                <Button Grid.Row="3" Grid.Column="4" Margin="3,3,3,3" Click="Click_BrowseCustom3">Browse</Button>
+
+                                <!-- BUTTONS -->
+                                <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" Margin="0,9,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="90" />
+                                        <ColumnDefinition Width="90" />
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="1" Margin="3,0,0,0" Click="Click_PreferencesOptionalReset">Reset</Button>
+                                    <Button Grid.Column="2" Margin="3,0,0,0" Click="Click_PreferencesOptionalSave">Save Changes</Button>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="6" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Foreground="{DynamicResource Brush_LabelForegroundDark}" Padding="0,0,10,0">Designed by:</Label>
+                        <Label Grid.Row="0" Grid.Column="1" Foreground="{DynamicResource Brush_LabelForegroundDark}">SPi</Label>
+                        <Label Grid.Row="1" Grid.Column="0" Foreground="{DynamicResource Brush_LabelForegroundDark}" Padding="0,0,10,0">Developed by:</Label>
+                        <Label Grid.Row="1" Grid.Column="1" Foreground="{DynamicResource Brush_LabelForegroundDark}">Scillman</Label>
+                        <Label Grid.Row="3" Grid.Column="0" Foreground="{DynamicResource Brush_LabelForegroundDark}" Padding="0,0,10,0">Version:</Label>
+                        <Label Grid.Row="3" Grid.Column="1" Foreground="{DynamicResource Brush_LabelForegroundDark}">2.0a</Label>
+                        <Label Grid.Row="4" Grid.Column="0" Foreground="{DynamicResource Brush_LabelForegroundDark}" Padding="0,0,10,0">Built:</Label>
+                        <Label Grid.Row="4" Grid.Column="1" Foreground="{DynamicResource Brush_LabelForegroundDark}">20021602</Label>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Compiling" x:Name="tabCompiling">
+                <Grid Margin="3,3,3,3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".25*" />
+                        <ColumnDefinition Width=".3*" />
+                        <ColumnDefinition Width=".2*" />
+                        <ColumnDefinition Width=".25*" />
+                    </Grid.ColumnDefinitions>
+                    <!-- LEVEL -->
+                    <Grid Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Margin="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="0">
+                            <GroupBox Grid.Row="0" Margin="0" Header="Level Compiling">
+                                <GroupItem Name="MapCompileGroup"> 
+                                    <Grid Margin="0" Height="{Binding ElementName=MapCompileGroup, Path=ActualHeight}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Row="0" Grid.Column="0" Margin="0,3,3,6" Click="Click_MapCreateNew">New Map</Button>
+                                        <Button Grid.Row="0" Grid.Column="1" Margin="3,3,0,6" Click="Click_MapRefreshList">Refresh</Button>
+                                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Label>This is a test...</Label>
+                                        </Grid>
+                                        <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" x:Name="ctrlMapList" />
+                                    </Grid>
+                                </GroupItem>
+                            </GroupBox>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" Margin="3,3,3,3" Click="Click_MapCompileBSP">Compile BSP</Button>
+                            <Button Grid.Row="1" Margin="3,3,3,3" Click="Click_MapCompileReflections">Compile Reflections</Button>
+                            <Button Grid.Row="2" Margin="3,3,3,3" Click="Click_MapBuildFastFile">Build Fast File</Button>
+                            <Button Grid.Row="3" Margin="3,3,3,3" Click="Click_MapUpdateZone">Update Zone File</Button>
+                            <Button Grid.Row="4" Margin="3,3,3,3" Click="Click_MapRunSelected">Run Selected Map</Button>
+                            <CheckBox Grid.Row="5" Margin="3,3,3,3" x:Name="ctrlMapDeveloper">Enable Developer</CheckBox>
+                            <CheckBox Grid.Row="6" Margin="3,3,3,3" x:Name="ctrlMapDeveloperScript">Enable Developer Script</CheckBox>
+                            <CheckBox Grid.Row="7" Margin="3,3,3,3" x:Name="ctrlMapCheats">Enable Cheats</CheckBox>
+                            <CheckBox Grid.Row="8" Margin="3,3,3,3" x:Name="ctrlMapCommandLineKey">Use Custom Command Line Options</CheckBox>
+                            <TextBox Grid.Row="9" Margin="3,3,3,3" x:Name="ctrlMapCommandLineValue" />
+                        </Grid>
+                    </Grid>
+                    <!-- APPLICATIONS -->
+                    <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Margin="3,0,3,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Margin="0,3,0,3" x:Name="ctrlRadiantLoadMap">Load selected map in Radiant</CheckBox>
+                        <Button Grid.Column="0" Grid.Row="1" Margin="0,3,3,3" Click="Click_MapOpenRadiant">Radiant</Button>
+                        <Button Grid.Column="1" Grid.Row="1" Margin="3,3,3,3" Click="Click_LaunchAssetManager">Asset Manager</Button>
+                        <Button Grid.Column="2" Grid.Row="1" Margin="3,3,0,3" Click="Click_LaunchEffectsEd">Effects Editor</Button>
+                    </Grid>
+                    <!-- LEVEL COMPILING -->
+                    <Grid Grid.Column="1" Grid.Row="1" Margin="3,0,3,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <CheckBox Grid.Row="0" Margin="0,3,0,3" Tag="default" x:Name="ctrlMapCompileBSP">Compile BSP</CheckBox>
+                        <CheckBox Grid.Row="1" Margin="0,3,0,3" Tag="default" x:Name="ctrlMapCompileLighting">Compile Lighting</CheckBox>
+                        <CheckBox Grid.Row="2" Margin="0,3,0,3" Tag="default" x:Name="ctrlMapConnectPaths">Connect Paths</CheckBox>
+                        <TabControl Grid.Row="3" Margin="0,3,0,0" x:Name="ctrlMapOptions">
+                            <TabItem x:Name="tabBSPOptions" Header="BSP Options">
+                                <Grid Margin="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width=".5*" />
+                                        <ColumnDefinition Width=".5*" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Grid.Row="0" Grid.ColumnSpan="2" x:Name="ctrlMapBSPOnlyEnts">onlyents</CheckBox>
+                                    <CheckBox Grid.Row="1" Grid.Column="0" x:Name="ctrlMapBSPBlockSizeKey">blocksize</CheckBox>
+                                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="ctrlMapBSPBlockSizeValue" />
+                                    <CheckBox Grid.Row="2" Grid.Column="0" x:Name="ctrlMapBSPSampleScaleKey">samplescale</CheckBox>
+                                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="ctrlMapBSPSampleScaleValue" />
+                                    <CheckBox Grid.Row="3" Grid.ColumnSpan="2" x:Name="ctrlMapBSPDebugLightmaps">debugLightmaps</CheckBox>
+                                    <CheckBox Grid.Row="4" Grid.ColumnSpan="2" x:Name="ctrlMapBSPCommandLineKey">Use Custom Command Line Options</CheckBox>
+                                    <TextBox Grid.Row="5" Grid.ColumnSpan="2" x:Name="ctrlMapBSPCommandLineValue" />
+                                </Grid>
+                            </TabItem>
+                            <TabItem x:Name="tabLightOptions" Header="Light Options">
+                                <Grid Margin="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                        <RowDefinition Height="28" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width=".5*" />
+                                        <ColumnDefinition Width=".5*" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Grid.Row="0" Grid.ColumnSpan="2" x:Name="ctrlMapLightFast">fast</CheckBox>
+                                    <CheckBox Grid.Row="1" Grid.ColumnSpan="2" x:Name="ctrlMapLightExtra" Tag="default">extra</CheckBox>
+                                    <CheckBox Grid.Row="2" Grid.ColumnSpan="2" x:Name="ctrlMapLightVerbose">verbose</CheckBox>
+                                    <CheckBox Grid.Row="3" Grid.ColumnSpan="2" x:Name="ctrlMapLightModelShadow">ModelShadow</CheckBox>
+                                    <CheckBox Grid.Row="4" Grid.ColumnSpan="2" x:Name="ctrlMapLightNoModelShadow">NoModelShadow</CheckBox>
+                                    <CheckBox Grid.Row="5" Grid.ColumnSpan="2" x:Name="ctrlMapLightDumpOptions">DumpOptions</CheckBox>
+                                    <CheckBox Grid.Row="6" Grid.Column="0" x:Name="ctrlMapLightTracesKey">traces</CheckBox>
+                                    <TextBox Grid.Row="6" Grid.Column="1" x:Name="ctrlMapLightTracesValue" />
+                                    <CheckBox Grid.Row="7" Grid.Column="0" x:Name="ctrlMapLightJitterKey">jitter</CheckBox>
+                                    <TextBox Grid.Row="7" Grid.Column="1" x:Name="ctrlMapLightJitterValue" />
+                                    <CheckBox Grid.Row="8" Grid.ColumnSpan="2" x:Name="ctrlMapLightCommandLineKey">Use Custom Command Line Options</CheckBox>
+                                    <TextBox Grid.Row="9" Grid.ColumnSpan="2" x:Name="ctrlMapLightCommandLineValue" />
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
+                    <!-- GRID -->
+                    <Grid Grid.Column="1" Grid.Row="2" Margin="3,3,3,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".65*" />
+                            <ColumnDefinition Width=".35*" />
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Row="0" Grid.Column="0" Margin="0,0,3,6" x:Name="ctrlMapGridKey">
+                            Model collect dots
+                        </CheckBox>
+                        <Button Grid.Row="0" Grid.Column="1" Margin="3,0,0,6" Click="Click_MapStartGrid">
+                            Start Grid
+                        </Button>
+                        <ComboBox Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,3" x:Name="ctrlMapGridValue" Tag="0">
+                            <ComboBoxItem IsSelected="True">Edit Existing Grid</ComboBoxItem>
+                            <ComboBoxItem>Make New Grid</ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
+                    <!-- CUSTOM BUTTONS -->
+                    <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="3,3,3,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Margin="0,3,3,3" x:Name="ctrlCustom0" Click="Click_CommonCustom" IsEnabled="False">&lt;none&gt;</Button>
+                        <Button Grid.Column="1" Margin="3,3,3,3" x:Name="ctrlCustom1" Click="Click_CommonCustom" IsEnabled="False">&lt;none&gt;</Button>
+                        <Button Grid.Column="2" Margin="3,3,3,3" x:Name="ctrlCustom2" Click="Click_CommonCustom" IsEnabled="False">&lt;none&gt;</Button>
+                        <Button Grid.Column="3" Margin="3,3,0,3" x:Name="ctrlCustom3" Click="Click_CommonCustom" IsEnabled="False">&lt;none&gt;</Button>
+                    </Grid>
+                    <!-- BROWSING -->
+                    <Grid Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="3,0,3,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <GroupBox Grid.Row="0" Header="File Browsing">
+                            <GroupItem>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Button Grid.Row="0" Margin="3,3,3,3" Click="Click_MapBrowseFileMap">map.gsc</Button>
+                                    <Button Grid.Row="1" Margin="3,3,3,3" Click="Click_MapBrowseFileCode">map_code.gsc</Button>
+                                    <Button Grid.Row="2" Margin="3,3,3,3" Click="Click_MapBrowseFileAnim">map_anim.gsc</Button>
+                                    <Button Grid.Row="3" Margin="3,3,3,3" Click="Click_MapBrowseFileFx">map_fx.gsc</Button>
+                                    <Button Grid.Row="4" Margin="3,3,3,3" Click="Click_MapBrowseFileStrings">map.str</Button>
+                                    <Button Grid.Row="5" Margin="3,3,3,3" Click="Click_MapBrowseFileSounds">sa/map.csv</Button>
+                                </Grid>
+                            </GroupItem>
+                        </GroupBox>
+                        <GroupBox Grid.Row="1" Header="Folder Browsing">
+                            <GroupItem>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Button Grid.Row="0" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="mods">mods</Button>
+                                    <Button Grid.Row="1" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="map_source">map_source</Button>
+                                    <Button Grid.Row="2" Margin="3,3,3,3" Click="Common_ClickBrowse" x:Name="ctrlMapBrowseLocalized">localizedstrings</Button>
+                                    <Button Grid.Row="3" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/maps">maps</Button>
+                                    <Button Grid.Row="4" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/sound">sound</Button>
+                                    <Button Grid.Row="5" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/soundaliases">soundaliases</Button>
+                                </Grid>
+                            </GroupItem>
+                        </GroupBox>
+                    </Grid>
+                    <!-- MOD BUILDER -->
+                    <Grid Grid.Column="3" Grid.Row="0" Grid.RowSpan="4" Margin="0">
+                        <Grid Margin="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Margin="0">
+                                <GroupBox Grid.Row="0" Margin="0" Header="Mod Compiling">
+                                    <GroupItem Name="ModCompileGroup">
+                                        <Grid Margin="0" Height="{Binding ElementName=ModCompileGroup, Path=ActualHeight}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Button Grid.Row="0" Grid.Column="0" Margin="0,3,3,6" Click="Click_ModCreateNew"  >New Mod</Button>
+                                            <Button Grid.Row="0" Grid.Column="1" Margin="3,3,0,6" Click="Click_ModRefreshList">Refresh</Button>
+                                            <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" x:Name="ctrlModList" />
+                                        </Grid>
+                                    </GroupItem>
+                                </GroupBox>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Button Grid.Row="0" Margin="3,3,3,3" Click="Click_ModBrowseFolder">Browse Folder</Button>
+                                <Button Grid.Row="1" Margin="3,3,3,3" Click="Click_ModBuildFF">Build Fast File</Button>
+                                <Button Grid.Row="2" Margin="3,3,3,3" Click="Click_ModBuildIWD">Build IWD File</Button>
+                                <Button Grid.Row="3" Margin="3,3,3,3" Click="Click_ModUpdateZone">Update Zone File</Button>
+                                <Button Grid.Row="4" Margin="3,3,3,3" Click="Click_ModRunSelected">Run Selected Mod</Button>
+                                <Grid Grid.Row="5" Margin="3,3,3,3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <RadioButton Grid.Column="0" GroupName="exeTarget" x:Name="ctrlModTargetSP" Tag="SP default" IsChecked="True">Singleplayer</RadioButton>
+                                    <RadioButton Grid.Column="1" GroupName="exeTarget" x:Name="ctrlModTargetMP" Tag="MP">Multiplayer</RadioButton>
+                                </Grid>
+                                <CheckBox Grid.Row="6" Margin="3,3,3,3" x:Name="ctrlModDeveloper">Enable Developer</CheckBox>
+                                <CheckBox Grid.Row="7" Margin="3,3,3,3" x:Name="ctrlModDeveloperScript">Enable Developer Script</CheckBox>
+                                <CheckBox Grid.Row="8" Margin="3,3,3,3" x:Name="ctrlModCheats">Enable Cheats</CheckBox>
+                                <CheckBox Grid.Row="9" Margin="3,3,3,3" x:Name="ctrlModUseMap">Load Selected Map</CheckBox>
+                                <CheckBox Grid.Row="10" Margin="3,3,3,3" x:Name="ctrlModCommandLineKey">Use Custom Command Line Options</CheckBox>
+                                <TextBox Grid.Row="11" Margin="3,3,3,3" x:Name="ctrlModCommandLineValue" />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Browsing" x:Name="tabBrowsing">
+                <Grid Margin="3,3,3,3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Grid.Row="0" Grid.Column="0" Margin="0,0,3,0" Header="Root Directory">
+                        <GroupItem>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Button Grid.Row="0" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="map_source">map_source</Button>
+                                <Button Grid.Row="1" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="mods">mods</Button>
+                                <Button Grid.Row="2" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="zone_source">zone_source</Button>
+                                <Button Grid.Row="3" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="source_data">source_data</Button>
+                                <Button Grid.Row="4" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="main">main</Button>
+                            </Grid>
+                        </GroupItem>
+                    </GroupBox>
+                    <GroupBox Grid.Row="0" Grid.Column="1" Margin="3,0,3,0" Header="Raw Directory">
+                        <GroupItem>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Button Grid.Row="0" Margin="3,3,3,3" Click="Common_ClickBrowse" x:Name="ctrlBrowseLocalized">localizedstrings</Button>
+                                <Button Grid.Row="1" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/maps">maps</Button>
+                                <Button Grid.Row="2" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/sound">sound</Button>
+                                <Button Grid.Row="3" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/soundaliases">soundaliases</Button>
+                            </Grid>
+                        </GroupItem>
+                    </GroupBox>
+                    <GroupBox Grid.Row="0" Grid.Column="2" Margin="3,0,0,0" Header="Advanced">
+                        <GroupItem>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Row="0" Grid.Column="0" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="bin">bin</Button>
+                                <Button Grid.Row="1" Grid.Column="0" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="main/video">main/video</Button>
+                                <Button Grid.Row="2" Grid.Column="0" Margin="3,3,3,3" Click="Common_ClickBrowse" x:Name="ctrlBrowseImagesMain">main/images</Button>
+                                <Button Grid.Row="3" Grid.Column="0" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/images">images</Button>
+                                <Button Grid.Row="4" Grid.Column="0" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/materials">materials</Button>
+                                <Button Grid.Row="5" Grid.Column="0" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/material_properties">material_properties</Button>
+                                <Button Grid.Row="6" Grid.Column="0" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/ui">ui</Button>
+                                <Button Grid.Row="0" Grid.Column="1" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/sun">sun</Button>
+                                <Button Grid.Row="1" Grid.Column="1" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/vision">vision</Button>
+                                <Button Grid.Row="2" Grid.Column="1" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/weapons">weapons</Button>
+                                <Button Grid.Row="3" Grid.Column="1" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/xanim">xanim</Button>
+                                <Button Grid.Row="4" Grid.Column="1" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/xmodel">xmodels</Button>
+                                <Button Grid.Row="5" Grid.Column="1" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/xmodelparts">xmodelparts</Button>
+                                <Button Grid.Row="6" Grid.Column="1" Margin="3,3,3,3" Click="Common_ClickBrowse" Tag="raw/xmodelsurfs">xmodelsurfs</Button>
+                            </Grid>
+                        </GroupItem>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Applications" x:Name="tabApplications">
+                <Grid Margin="3,3,3,3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Row="0" Margin="3,3,3,3"
+                            Click="Click_LaunchRadiant" MouseEnter="Hover_LaunchRadiant">Radiant</Button>
+                    <Button Grid.Row="1" Margin="3,3,3,3"
+                            Click="Click_LaunchAssetManager" MouseEnter="Hover_LaunchAssetManager">Asset Manager</Button>
+                    <Button Grid.Row="2" Margin="3,3,3,3"
+                            Click="Click_LaunchEffectsEd" MouseEnter="Hover_LaunchEffectsEd">Effects Editor</Button>
+                    <Button Grid.Row="3" Margin="3,3,3,3"
+                            Click="Click_RunConverter" MouseEnter="Hover_RunConverter">Run Converter</Button>
+                    <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Margin="6,3,3,3">
+                        <TextBlock TextWrapping="Wrap" x:Name="ctrlAppDescription">
+                            For a description of what each applications does,
+                            please move your mouse over one of the buttons
+                            on the left.
+                        </TextBlock>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Resource Viewer" x:Name="tabResourceViewer">
+
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <TabControl Grid.Row="0">
+                        <TabItem Header="Material">
+                            <Grid Margin="0,3,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <GroupBox Grid.Column="0" Header="Available Materials">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Row="0" Grid.Column="1" Margin="3,6,0,6" Click="Click_ResourceViewerMaterials">Refresh List</Button>
+                                        <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="ctrlResourcesMaterialList">
+                                            <ListBoxItem>Example 1</ListBoxItem>
+                                            <ListBoxItem>Example 2</ListBoxItem>
+                                        </ListBox>
+                                    </Grid>
+                                </GroupBox>
+                                <Grid Grid.Column="1">
+                                    <TextBlock FontFamily="Courier New" x:Name="ctrlResourceViewMaterialInfo" />
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Images">
+                            <Grid Margin="0,3,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <GroupBox Grid.Column="0" Header="Available Images">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Row="0" Grid.Column="1" Margin="3,6,0,6" Click="Click_ResourceViewerImages">Refresh List</Button>
+                                        <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="ctrlResourcesImageList">
+                                            <ListBoxItem>Example 1</ListBoxItem>
+                                            <ListBoxItem>Example 2</ListBoxItem>
+                                        </ListBox>
+                                    </Grid>
+                                </GroupBox>
+                                <Grid Grid.Column="1">
+                                    <TextBlock FontFamily="Courier New" x:Name="ctrlResourceViewImageInfo" />
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <!-- CONSOLE -->
+        <Grid Grid.Row="1" Height="auto">
+            <Grid Height="auto">
+                <Grid.Background>
+                    <SolidColorBrush Color="{DynamicResource WindowHeader}" />
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" HorizontalAlignment="Right" Height="auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Margin="0,0,10,0" Click="Click_CopyConsole"
+                            Visibility="Collapsed" x:Name="ctrlConsoleCopy">Copy</Button>
+                    <Button Grid.Column="1" Margin="0" Click="Click_ToggleConsole">Toggle</Button>
+                </Grid>
+                <TextBox Grid.Row="1" MaxHeight="100" AcceptsReturn="True" AcceptsTab="True"
+                         VerticalScrollBarVisibility="Visible" Visibility="Collapsed"
+                         IsReadOnly="True" x:Name="ctrlConsole" />
+            </Grid>
+        </Grid>
+    </Grid>
+</controls:CompilerWindow>

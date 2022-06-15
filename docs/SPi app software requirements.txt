@@ -1,0 +1,162 @@
+A COD4 Mod tools launcher which will allow Singleplayer Mission developing to be much easier.
+
+First things first it will have similar features with Compile tools only a bit more advanced.
+First time you open the program it will ask you for the directory of the game. 
+(should we require users to put this in cod4/bin_spi so software can auto detect the path?) 
+Either way a directory path field option will always be needed.
+
+The software browsing will be through top tabs like COD4 compile tools (Preferences/LevelCompiling/Apps/etc)
+Ours will be like this:
+
+Tabs:
+1)Preferences
+2)Mission Developing
+3)Browsing
+4)Applications
+
+Details about each tab:
+
+-----------------------------------
+
+1) Preferences:
+-Browse the game directory (just like cod4 mod tools)
+-Dark theme? XD only if easy.
+
+-----------------------------------
+
+2) Mission Developing:
+This tab will be just like Level Compiling tab only with a few additional stuff.
+
+Element1: List of all levels:
+
+	Near that list there will be a few buttons.
+
+	a) Build New Level  (Button)
+	{
+		Once pressed a text field will appear in a new window asking for a mapname. 
+		If mapname is invalid error message appears asking for avalid name.
+		
+		Other than that this important button generates new raw files using the mapname.
+		These raw files are the following:
+
+		map_source/mapname.map (a template map i will provide)
+		raw/maps/mapname.gsc (a code i will provide basic stuff map_load::main for now)
+		raw/maps/mapname_anim.gsc (called from main gsc)
+		raw/maps/mapname_fx.gsc (called from main gsc)
+		raw/english/localizedstrings/mapname.str (basic str file for map)
+		raw/sound/mapname FOLDER (sound folder for the map)
+		raw/soundaliases/mapname.str (basic soundalias file i will provide) 
+		zone_source/mapname.csv (with standard zone file assets that are given once zone file creation + additiona ones needed for sounds and map to work properly)
+		{
+			rawfile,soundaliases/mapname.csv
+			sound,mapname,mapname,all_sp
+			weapon,sp/mp5
+			xmodel,viewmodel_base_viewhands
+		}
+		(as for gdt files and compass files let's not implement that yet unless you think its really necessary, we go for basics for now. Maybe in later versions)
+	}
+
+	b) Refresh Level List: (Button)
+	A simple button just to refresh the level list.
+
+Element 2: Level Compiling.
+
+	Just like Compile tools, we need 5 BUTTONS.
+	a) Compile BSP (Button)
+	b) Compile Reflections (Button)
+	c) Build Fast File (Button)
+	d) Edit/Update Zone File (Button)
+	e) Run Selected Level (Button)
+
+	Below the buttons there will be the 
+	-Enable Developer (Checkbox)
+	-Enable Developer Script (Checkbox)
+	-Enable Cheats (Checkbox)
+	-Use Custom Command Line Options (Checkbox + text field)
+
+	Next to the buttons there will be the 
+	-Compile BSP (Checkbox)
+	-Compile Lighting (Checkbox)
+	-Connect Paths (Checkbox)
+	-BSP Options (Tab with checkboxes under it)
+	-Light Options (Tab with checkboxes under it) 
+	Working exactly like Compile Tools.
+	
+	+add that grid file option? 
+	i dont think its necessary, if you want add it.
+	
+Element 3: Level File Browsing.
+
+	When having a map selected there will be some buttons 
+	that will allow you to instantly open text files of the map.
+	
+	Those would be:
+	-Edit Level Script (raw/maps/mapname.gsc) - (if possible make the software look if there are _anim and _fx files of the selected map and have them opened too when clicking that, if not open just the normal gsc)
+	-Edit Localizedstrings File (raw/english/localizedstrings/mapname.str)
+	-Edit Soundaliases File (raw/soundaliases/mapname.csv)
+	
+	NOTE: We have to find away to see if users have associated these extensions with corresponding software.
+	Like if they open all GSC files with text editor or some programmers notepad or smth.
+	Or CSVs with Excel or text editors? idk. Maybe keep it by default and 
+	let users decide when the (chose software to open this file) window appears.
+	Or just have a note suggesting them to associate these extensions with text editor.
+	(gsc,str,csv)
+	
+Element 4: Mod Builder.
+
+	I am thinking of some kind of Mod Builder. 
+	Only we need a basic mod BAT file as a tempate with the 7z.exe and stuff.
+	
+	Button: Make New Mod - (generates a new mod folder with empty images/sounds/weapons folders and a ready bat file to compile the folders to iwds)
+	List: Folders in cod4dir/mods/
+	Button: Browse/Open Selected Mod Folder
+	(as for FF compile should we leave that for later right?)
+	
+-----------------------------------
+
+3) Browsing (TAB) :
+ 
+	Folder Browsing.
+	A seperate list of buttons that will allow you to browse essentail modding folders.
+	Really useful shortcuts for modding.
+	Buttons in Categories:
+	
+	Game Direcotry:
+	-map_source/
+	-Mods/
+	-zone_source/
+	-source_data/
+	-main/
+	
+	Raw:
+	-Raw/English/Localizedstrings/
+	-Raw/Maps
+	-Raw/Sound/
+	-Raw/Soundaliases/
+	
+	Advanced/Expanded Browsing:	
+	-main/images
+	-raw/ui
+	-raw/images
+	-raw/materials
+	-raw/material_properties
+	-raw/sun
+	-raw/vision
+	-raw/weapons
+	-raw/xanim
+	-raw/xmodels
+	-raw/xmodels
+	-raw/xmodelparts
+	-raw/xmodelsurfs
+
+-----------------------------------
+
+4) Applications (TAB) :
+ 
+	Just like Compile tools a tab devoted in opening apps of the tools.
+	Button: Radiant
+	Button: Assets Manager
+	Button: Effects Editor
+	Button: Run Converter
+
+-----------------------------------

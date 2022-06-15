@@ -1,0 +1,128 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <!-- THEME VERSION SUPPORTED -->
+    <system:String x:Key="ThemeVersion">200216</system:String>
+        
+    <!-- BUTTON -->
+    <Color x:Key="ButtonBackground">#2D2D2D</Color>
+    <Color x:Key="ButtonForeground">#C5C5C5</Color>
+    <Color x:Key="ButtonHoverBackground">#007ACC</Color>
+    <Color x:Key="ButtonHoverForeground">#1E1E1E</Color>
+    <Color x:Key="ButtonPressedBackground">#0066AA</Color>
+    <Color x:Key="ButtonPressedForeground">#1E1E1E</Color>
+    <Color x:Key="ButtonDisabledBackground">#262626</Color>
+    <Color x:Key="ButtonDisabledForeground">#999999</Color>
+
+    <!-- CHECKBOX -->
+    <Color x:Key="CheckBoxForeground">#C5C5C5</Color>
+    <Color x:Key="CheckBoxDisabledForeground">#999999</Color>
+    <Color x:Key="CheckBoxBulletBackground">#2D2D2D</Color>
+    <Color x:Key="CheckBoxBulletForeground">#C5C5C5</Color>
+    <Color x:Key="CheckBoxBulletHoverBackground">#4D4D4D</Color>
+    <Color x:Key="CheckBoxBulletHoverForeground">#C5C5C5</Color>
+    <Color x:Key="CheckBoxBulletDisabledBackground">#262626</Color>
+    <Color x:Key="CheckBoxBulletDisabledForeground">#999999</Color>
+
+    <!-- COMBOBOX -->
+    <Color x:Key="ComboBoxArrowBackground">#1E1E1E</Color>
+    <Color x:Key="ComboBoxArrowForeground">#FFFFFF</Color>
+    <Color x:Key="ComboBoxArrowHoverBackground">#FF0000</Color>
+    <Color x:Key="ComboBoxArrowDisabledForeground">#C5C5C5</Color>
+    <Color x:Key="ComboBoxArrowChecked">#FF0000</Color>
+    <Color x:Key="ComboBoxBorder">#2D2D2D</Color>
+    <Color x:Key="ComboBoxBackground">#1E1E1E</Color>
+    <Color x:Key="ComboBoxForeground">#E8E8E8</Color>
+    <Color x:Key="ComboBoxDisabledBorder">#000000</Color>
+    <Color x:Key="ComboBoxDisabledBackground">#141414</Color>
+    <Color x:Key="ComboBoxDisabledForeground">#999999</Color>
+    
+    <!-- COMBOBOXITEM -->
+    <Color x:Key="ComboBoxItemBackground">#00000000</Color>
+    <Color x:Key="ComboBoxItemForeground">#E8E8E8</Color>
+    <Color x:Key="ComboBoxItemHoverBackground">#333333</Color>
+    <Color x:Key="ComboBoxItemHoverForeground">#E8E8E8</Color>
+
+    <!-- GROUPBOX -->
+    <Color x:Key="GroupBoxForeground">#C5C5C5</Color>
+
+    <!-- LABEL -->
+    <Color x:Key="LabelForeground">#C5C5C5</Color>
+    <Color x:Key="LabelForegroundDark">#808080</Color>
+    
+    <!-- LISTBOX -->
+    <Color x:Key="ListBoxBackground">#1E1E1E</Color>
+    <Color x:Key="ListBoxBorder">#2D2D2D</Color>
+    <Color x:Key="ListBoxDisabledBackground">#141414</Color>
+    <Color x:Key="ListBoxDisabledBorder">#000000</Color>
+    
+    <!-- LISTBOXITEM -->
+    <Color x:Key="ListBoxItemSelectedBackground">#2D2D2D</Color>
+    <Color x:Key="ListBoxItemSelectedForeground">#E8E8E8</Color>
+    <Color x:Key="ListBoxItemForeground">#C5C5C5</Color>
+    <Color x:Key="ListBoxItemDisabledForeground">#808080</Color>
+    
+    <!-- RADIOBUTTON -->
+    <Color x:Key="RadioButtonBorder">#2D2D2D</Color>
+    <Color x:Key="RadioButtonBackground">#2D2D2D</Color>
+    <Color x:Key="RadioButtonForeground">#C5C5C5</Color>
+    <Color x:Key="RadioButtonBullet">#C5C5C5</Color>
+
+    <Color x:Key="RadioButtonHoverBorder">#4D4D4D</Color>
+    <Color x:Key="RadioButtonHoverBackground">#4D4D4D</Color>
+    <Color x:Key="RadioButtonHoverForeground">#C5C5C5</Color>
+    <Color x:Key="RadioButtonHoverBullet">#C5C5C5</Color>
+
+    <Color x:Key="RadioButtonDisabledBorder">#262626</Color>
+    <Color x:Key="RadioButtonDisabledBackground">#262626</Color>
+    <Color x:Key="RadioButtonDisabledForeground">#999999</Color>
+    <Color x:Key="RadioButtonDisabledBullet">#999999</Color>
+
+    <!-- SCROLLBAR -->
+    <Color x:Key="ScrollBarBackground">#141414</Color>
+    <Color x:Key="ScrollBarForeground">#2D2D2D</Color>
+    <Color x:Key="ScrollBarHoverForeground">#333333</Color>
+    <Color x:Key="ScrollBarDisabledBackground">#080808</Color>
+    <Color x:Key="ScrollBarDisabledForeground">#080808</Color>
+    <Color x:Key="ScrollBarButtonBackground">#2D2D2D</Color>
+    <Color x:Key="ScrollBarButtonForeground">#484848</Color>
+    <Color x:Key="ScrollBarButtonHoverBackground">#FF0000</Color>
+    <Color x:Key="ScrollBarButtonHoverForeground">#FFFFFF</Color>
+    <Color x:Key="ScrollBarButtonPressBackground">#080808</Color>
+    <Color x:Key="ScrollBarButtonPressForeground">#333333</Color>
+    <Color x:Key="ScrollBarButtonDisabledBackground">#080808</Color>
+    <Color x:Key="ScrollBarButtonDisabledForeground">#222222</Color>
+
+    <!-- TABCONTROL -->
+    <Color x:Key="TabControlBackground">#1E1E1E</Color>
+    <Color x:Key="TabControlHeader">#252525</Color>
+
+    <!-- TABITEM -->
+    <Color x:Key="TabItemBackground">#2D2D2D</Color>
+    <Color x:Key="TabItemForeground">#E8E8E8</Color>
+    <Color x:Key="TabItemHoverBackground">#333333</Color>
+    <Color x:Key="TabItemHoverForeground">#E8E8E8</Color>
+    <Color x:Key="TabItemSelectedBackground">#1E1E1E</Color>
+    <Color x:Key="TabItemSelectedForeground">#E8E8E8</Color>
+    <Color x:Key="TabItemDisabledBackground">#252525</Color>
+    <Color x:Key="TabItemDisabledForeground">#999999</Color>
+
+    <!-- TEXTBOX -->
+    <Color x:Key="TextBoxBackground">#1A1A1A</Color>
+    <Color x:Key="TextBoxForeground">#C5C5C5</Color>
+    <Color x:Key="TextBoxReadOnlyBackground">#0F0F0F</Color>
+    <Color x:Key="TextBoxReadOnlyForeground">#C5C5C5</Color>
+    <Color x:Key="TextBoxDisabledBackground">#0F0F0F</Color>
+    <Color x:Key="TextBoxDisabledForeground">#999999</Color>
+    <Color x:Key="TextBoxBorder">#2D2D2D</Color>
+    <Color x:Key="TextBoxBorderHover">#007ACC</Color>
+    <Color x:Key="TextBoxBorderSelected">#007ACC</Color>
+    <Color x:Key="TextBoxBorderDisabled">#000000</Color>
+
+    <!-- WINDOW -->
+    <Color x:Key="WindowBorder">#141414</Color>
+    <Color x:Key="WindowHeader">#2D2D2D</Color>
+    <Color x:Key="WindowTitle">#999999</Color>
+
+</ResourceDictionary>
